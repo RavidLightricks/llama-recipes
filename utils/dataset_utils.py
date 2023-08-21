@@ -27,12 +27,8 @@ def get_preprocessed_dataset(
         raise NotImplementedError(f"{dataset_config.dataset} is not (yet) implemented")
 
     def get_split():
-        return (
-            dataset_config.train_split
-            if split == "train"
-            else dataset_config.test_split
-        )
-    
+        return dataset_config.train_split if split == "train" else dataset_config.test_split
+
     return DATASET_PREPROC[dataset_config.dataset](
         dataset_config,
         tokenizer,
