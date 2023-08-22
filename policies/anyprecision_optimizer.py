@@ -83,7 +83,6 @@ class AnyPrecisionAdamW(Optimizer):
                 closure()
 
         for group in self.param_groups:
-
             beta1, beta2 = group["betas"]
             lr = group["lr"]
             weight_decay = group["weight_decay"]
@@ -99,15 +98,12 @@ class AnyPrecisionAdamW(Optimizer):
                     continue
 
                 if p.grad.is_sparse:
-                    raise RuntimeError(
-                        "AnyPrecisionAdamW does not support sparse gradients"
-                    )
+                    raise RuntimeError("AnyPrecisionAdamW does not support sparse gradients")
 
                 state = self.state[p]
 
                 # State initialization
                 if len(state) == 0:
-
                     state["step"] = torch.tensor(0.0)
 
                     # momentum - EMA of gradient values
@@ -158,9 +154,7 @@ class AnyPrecisionAdamW(Optimizer):
                 # adjust using bias2
                 denom_correction = (1 - beta2**step) ** 0.5  # avoids math import
 
-                centered_variance = (exp_avg_sq.sqrt() / denom_correction).add_(
-                    eps, alpha=1
-                )
+                centered_variance = (exp_avg_sq.sqrt() / denom_correction).add_(eps, alpha=1)
 
                 # lr update to compensation
                 if use_kahan_summation:

@@ -1,5 +1,4 @@
 -f https://download.pytorch.org/whl/torch_stable.html 
-torch==2.0.1+cu118
 accelerate
 appdirs
 loralib
@@ -14,3 +13,17 @@ sentencepiece
 py7zr
 scipy
 optimum
+transformers
+datasets
+accelerate
+sentencepiece
+protobuf==3.20
+py7zr
+scipy
+peft
+bitsandbytes
+fire
+torch_tb_profiler
+ipywidgets
+jupyterlab_git
+jupytext
